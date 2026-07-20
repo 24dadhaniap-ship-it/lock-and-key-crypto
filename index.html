@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lock & Key — Text Encoding & Decoding Tool</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="brand-title">
+        <div class="brand-icon">🔐</div>
+        <div class="brand-text">
+          <h1>Lock & Key</h1>
+          <p>Text Encoding & Decoding Studio</p>
+        </div>
+      </div>
+    </header>
+
+    <!-- MAIN ENCODE & DECODE STUDIO -->
+    <main class="studio-grid">
+      <!-- Input & Controls Panel -->
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">⚙️ Cipher Controls</h2>
+          <div class="btn-group">
+            <button class="btn btn-secondary" id="btn-random-key" title="Generate Random Key">🎲 Random Key</button>
+            <button class="btn btn-secondary" id="btn-load-file">📂 Load File</button>
+            <input type="file" id="file-input" style="display: none;" accept=".txt,.json">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="cipher-select">Select Cipher Algorithm</label>
+          <select class="form-select" id="cipher-select">
+            <option value="caesar">Caesar Cipher (Numeric Shift)</option>
+            <option value="rot13">ROT13 (Fixed Shift 13)</option>
+            <option value="substitution">Monoalphabetic Substitution</option>
+            <option value="vigenere">Vigenère Cipher (Keyword)</option>
+            <option value="transposition">Rail Fence Transposition</option>
+            <option value="xor">XOR Cipher (Base64 Output)</option>
+            <option value="otp">XOR One-Time Pad (Random Matching Length)</option>
+            <option value="aes">AES-256 GCM (Modern Standard)</option>
+            <option value="rsa">Toy RSA Asymmetric Simulation</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="key-input" id="key-label">Secret Key / Shift</label>
+          <div class="key-input-row">
+            <input type="text" class="form-control" id="key-input" placeholder="e.g. 7" value="7">
+          </div>
+          <!-- Key Strength Indicator -->
+          <div id="key-strength-container"></div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="input-text">Input Message</label>
+          <textarea class="form-textarea" id="input-text" placeholder="Enter plaintext to encode (encrypt) or ciphertext to decode (decrypt)...">Meet me at the old bridge at midnight</textarea>
+        </div>
+
+        <div class="btn-group">
+          <button class="btn btn-primary" id="btn-encrypt">🔒 Encode (Encrypt)</button>
+          <button class="btn btn-secondary" id="btn-decrypt">🔓 Decode (Decrypt)</button>
+        </div>
+      </div>
+
+      <!-- Result & Visualizer Panel -->
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">📄 Result & Transformation</h2>
+          <div class="btn-group">
+            <button class="btn btn-secondary" id="btn-copy-result">📋 Copy</button>
+            <button class="btn btn-secondary" id="btn-export-file">💾 Export File</button>
+          </div>
+        </div>
+
+        <div id="error-alert-container"></div>
+
+        <div class="form-group">
+          <label class="form-label">Processed Result</label>
+          <div class="output-box" id="result-output">Result will appear here...</div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Character Transformation Steps</label>
+          <div id="transformation-container"></div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>
